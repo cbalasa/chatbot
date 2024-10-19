@@ -55,4 +55,5 @@ npm run dev
 - While using Chrome can cause hydration errors and you need to refresh the
   page. I recommend to use Safari.
 - Strict mode forces components to render twice, therefor the initial messages
-  will appear twice in development mode.
+  will appear twice in development mode. If running the app in development mode,
+  you can disable `reactStrictMode` from `next.config.mjs`
