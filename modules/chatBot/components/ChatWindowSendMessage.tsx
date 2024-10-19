@@ -1,4 +1,3 @@
-// import Button from "@/components/Buttons/Button";
 import Svg from "@/shared/components/Svg/Svg";
 import { SvgName } from "@/shared/enums/svg";
 import React from "react";
