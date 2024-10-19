@@ -1,0 +1,3 @@
+.button {
+	@apply flex justify-between items-stretch font-bold uppercase text-xs mx-auto disabled:opacity-50;
+}
