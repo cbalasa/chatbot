@@ -12,7 +12,11 @@ function ChatWindowBody() {
 		let messagesWrapper: HTMLElement | null =
 			document.getElementById("messages");
 		if (messagesWrapper) {
-			messagesWrapper.scrollTo(0, messagesWrapper.scrollHeight);
+			messagesWrapper.scrollTo({
+				left: 0,
+				top: messagesWrapper.scrollHeight,
+				behavior: "smooth",
+			});
 		}
 	};
 	useEffect(() => {
@@ -20,9 +24,9 @@ function ChatWindowBody() {
 	}, [messages]);
 
 	return (
-		<div className="flex flex-col mb-2  relative text-sm mt-4">
+		<div className="flex flex-col mb-2  relative text-sm mt-4 ">
 			<div
-				className="flex flex-col overflow-y-auto px-2 h-[40vh] w-full"
+				className="flex flex-col overflow-y-auto px-2 h-[40vh] w-full pb-2"
 				id="messages"
 			>
 				{messages?.map((message, index) => {

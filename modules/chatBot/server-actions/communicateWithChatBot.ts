@@ -3,11 +3,9 @@ import { getStockData } from "@/lib/chatbot/getStockData";
 import { ChatBotQuestion } from "../types/chatBot";
 
 import { throwCustomError } from "@/utils/throwCustomError";
-import {
-	ErrorMessages,
-	ErrorStatusCode,
-} from "@/shared/enums/errorsStatusCode";
+import { ErrorMessages, ErrorStatusCode } from "@/shared/enums/errors";
 import { getAnswer } from "./helpers";
+import { isNodeError } from "@/shared/types/typeGuards/error";
 
 export async function communicateWithChatBot({
 	question,
@@ -19,9 +17,12 @@ export async function communicateWithChatBot({
 
 		return response;
 	} catch (error) {
-		throwCustomError({
-			errorMessage: ErrorMessages.FAILED_GENERATING_ANSWER,
-			status: ErrorStatusCode.BAD_REQUEST,
-		});
+		if (error instanceof Error) {
+			throwCustomError({
+				errorMessage: ErrorMessages.FAILED_GENERATING_ANSWER,
+				status: ErrorStatusCode.BAD_REQUEST,
+				cause: error.message,
+			});
+		}
 	}
 }

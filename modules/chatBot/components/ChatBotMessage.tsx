@@ -59,7 +59,7 @@ function ChatBotMessage({
 	return (
 		<div className="flex flex-col w-9/12">
 			<span
-				className={`w-full p-2 self-start bg-turquoise bg-opacity-20 ${answer?.stockExchange ? "rounded-t-lg " : "rounded-lg"}`}
+				className={`w-full p-2 self-start bg-secondary bg-opacity-15 ${answer?.stockExchange || answer?.stockSelect ? "rounded-t-lg " : "rounded-lg"}`}
 			>
 				{answer?.static}
 			</span>

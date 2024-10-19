@@ -1,8 +1,11 @@
 "use client";
 
 import { communicateWithChatBot } from "../server-actions/communicateWithChatBot";
-import { useDispatch } from "react-redux";
-import { setchatBotAction } from "@/lib/store/slices/chatBot";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	chatBotCurrentStockExchangeSelector,
+	setchatBotAction,
+} from "@/lib/store/slices/chatBot";
 import { ChatBotQuestion } from "../types/chatBot";
 import { ChatBotState } from "../enums/enums";
 import { constructResponse } from "../server-actions/helpers";
@@ -21,14 +24,13 @@ const useChatBotMessages = () => {
 
 	const sendQuestion = async ({ question, chatBotState }: ChatBotQuestion) => {
 		dispatch(setchatBotAction.chatBotLoadingReducer(true));
-		if (question) {
-			dispatch(setchatBotAction.chatBotMessagesReducer([{ question }]));
-		}
-		let response;
 
 		setTimeout(async () => {
 			try {
-				response = await communicateWithChatBot({ question, chatBotState });
+				const response = await communicateWithChatBot({
+					question,
+					chatBotState,
+				});
 				dispatch(setchatBotAction.chatBotMessagesReducer(response));
 				dispatch(setchatBotAction.chatBotLoadingReducer(false));
 			} catch (error) {

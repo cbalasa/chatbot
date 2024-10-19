@@ -2,10 +2,7 @@ import path from "path";
 import fs from "fs";
 import { StockData } from "@/shared/types/stockData";
 import { throwCustomError } from "@/utils/throwCustomError";
-import {
-	ErrorMessages,
-	ErrorStatusCode,
-} from "@/shared/enums/errorsStatusCode";
+import { ErrorMessages, ErrorStatusCode } from "@/shared/enums/errors";
 import { isNodeError } from "@/shared/types/typeGuards/error";
 
 export const getStockData = async () => {
@@ -23,6 +20,7 @@ export const getStockData = async () => {
 			throw throwCustomError({
 				errorMessage: ErrorMessages.FAILED_GETTING_STOCKS,
 				status: ErrorStatusCode.BAD_REQUEST,
+				cause: error.message,
 			});
 		}
 	}

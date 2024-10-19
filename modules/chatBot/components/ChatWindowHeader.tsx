@@ -10,7 +10,11 @@ function ChatWindowHeader({
 	setShowChatWindow: (value: React.SetStateAction<boolean>) => void;
 }) {
 	return (
-		<div className="h-10 bg-primary flex w-full justify-center items-center text-white text-base font-medium relative">
+		<div className="h-10 bg-primary flex w-full justify-between items-center text-white text-base font-medium relative px-4">
+			<div className="flex gap-2 h-10 items-center">
+				<Svg name={SvgName.CHAT_BOT_ICON} fill="#fff" />
+				<span className="text-white">Chatbot</span>
+			</div>
 			<Button
 				classes="absolute right-4 bottom-2.5"
 				onClick={() => {

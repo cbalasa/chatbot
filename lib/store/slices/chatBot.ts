@@ -13,7 +13,7 @@ interface ChatBotState {
 
 const initialState: ChatBotState = {
 	messages: [],
-	loading: false,
+	loading: true,
 	currentStockExchange: null,
 };
 
