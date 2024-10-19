@@ -1,4 +1,3 @@
-// import Button from "@/components/Buttons/Button";
 import Button from "@/shared/components/Button/Button";
 import Svg from "@/shared/components/Svg/Svg";
 import { SvgName } from "@/shared/enums/svg";
@@ -21,7 +20,6 @@ function ChatWindowHeader({
 					setShowChatWindow(false);
 				}}
 				name="close-bot"
-				disabled={true}
 			>
 				<Svg name={SvgName.CLOSE_BUTTON} stroke="#fff" size={20} />
 			</Button>

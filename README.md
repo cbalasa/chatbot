@@ -49,3 +49,10 @@ npm run dev
 - Choose a stock exchange to view the top companies.
 - Select a company to see its current stock price.
 - Use the options to go back or explore another stock exchange.
+
+### Known issues in Dev
+
+- While using Chrome can cause hydration errors and you need to refresh the
+  page. I recommend to use Safari.
+- Strict mode forces components to render twice, therefor the initial messages
+  will appear twice in development mode.
