@@ -1,7 +1,7 @@
 // import Button from "@/components/Buttons/Button";
 import Svg from "@/shared/components/Svg/Svg";
 import { SvgName } from "@/shared/enums/svg";
-import React, { useState } from "react";
+import React from "react";
 import { colors } from "@/tailwind.config";
 import Button from "@/shared/components/Button/Button";
 import Input from "@/shared/components/Input/Input";

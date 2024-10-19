@@ -5,7 +5,6 @@ import { ChatBotQuestion } from "../types/chatBot";
 import { throwCustomError } from "@/utils/throwCustomError";
 import { ErrorMessages, ErrorStatusCode } from "@/shared/enums/errors";
 import { getAnswer } from "./helpers";
-import { isNodeError } from "@/shared/types/typeGuards/error";
 
 export async function communicateWithChatBot({
 	question,

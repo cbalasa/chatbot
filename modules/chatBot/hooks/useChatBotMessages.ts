@@ -1,11 +1,8 @@
 "use client";
 
 import { communicateWithChatBot } from "../server-actions/communicateWithChatBot";
-import { useDispatch, useSelector } from "react-redux";
-import {
-	chatBotCurrentStockExchangeSelector,
-	setchatBotAction,
-} from "@/lib/store/slices/chatBot";
+import { useDispatch } from "react-redux";
+import { setchatBotAction } from "@/lib/store/slices/chatBot";
 import { ChatBotQuestion } from "../types/chatBot";
 import { ChatBotState } from "../enums/enums";
 import { constructResponse } from "../server-actions/helpers";
