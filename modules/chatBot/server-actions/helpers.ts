@@ -28,7 +28,7 @@ export const getAnswer = async ({
 	chatBotState,
 	stockData,
 }: ChatBotQuestion) => {
-	let answer: Answer[] = [];
+	const answer: Answer[] = [];
 
 	if (chatBotState === ChatBotState.CHAT_BOT_ERROR) {
 		constructResponse({ chatBotState: ChatBotState.CHAT_BOT_ERROR });
@@ -73,16 +73,13 @@ const getRequestedStock = ({
 	return stockAnswer;
 };
 
-const findRequestedStock = (
-	{
-		question,
-		stockData,
-	}: {
-		question: Question;
-		stockData: StockData[] | TopStock[] | undefined;
-	},
-	memoStock?: StockData | TopStock | TopStock[],
-) => {
+const findRequestedStock = ({
+	question,
+	stockData,
+}: {
+	question: Question;
+	stockData: StockData[] | TopStock[] | undefined;
+}): StockData | TopStock | TopStock[] => {
 	for (const stock of stockData!) {
 		if (stock.code === question?.code) {
 			if (isStockData(stock)) {
@@ -91,17 +88,18 @@ const findRequestedStock = (
 			return stock;
 		}
 		if (isStockData(stock)) {
-			memoStock = findRequestedStock(
-				{
-					question,
-					stockData: stock.topStocks,
-				},
-				memoStock,
-			);
+			const foundStock: StockData | TopStock | TopStock[] = findRequestedStock({
+				question,
+				stockData: stock.topStocks,
+			});
+
+			if (foundStock) {
+				return foundStock;
+			}
 		}
 	}
 
-	return memoStock!;
+	return undefined!;
 };
 
 export const constructResponse = ({

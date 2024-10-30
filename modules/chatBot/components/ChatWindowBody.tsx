@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import UserMessage from "./UserMessage";
 import ChatBotMessage from "./ChatBotMessage";
 import { useSelector } from "react-redux";
@@ -8,13 +8,16 @@ import LoadingResponse from "./LoadingResponse";
 function ChatWindowBody() {
 	const messages = useSelector(chatBotMessagesSelector);
 
+	const messagesWrapper = useRef<HTMLElement | null>();
+	useEffect(() => {
+		messagesWrapper.current = document.getElementById("messages");
+	}, []);
+
 	const scrollToBottom = () => {
-		let messagesWrapper: HTMLElement | null =
-			document.getElementById("messages");
-		if (messagesWrapper) {
-			messagesWrapper.scrollTo({
+		if (messagesWrapper.current) {
+			messagesWrapper.current.scrollTo({
 				left: 0,
-				top: messagesWrapper.scrollHeight,
+				top: messagesWrapper.current.scrollHeight,
 				behavior: "smooth",
 			});
 		}
