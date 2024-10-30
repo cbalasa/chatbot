@@ -13,6 +13,7 @@ This chatbot provides an easy interface for users to:
 - Get the current stock price of any selected company.
 - Navigate back to the main menu or reselect a stock exchange to explore more
   companies.
+  ![chatbot_demo](https://github.com/user-attachments/assets/ffb48949-ac90-4cae-9407-4bb56b700fce)
 
 ## Getting Started
 
@@ -28,6 +29,7 @@ Ensure you have the following installed on your system:
 1. Clone the repository
 
 ```bash
+
 git clone git@github.com:cbalasa/chatbot.git
 ```
 
